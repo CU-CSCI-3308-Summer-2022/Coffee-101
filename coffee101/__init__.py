@@ -31,9 +31,9 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
-    from . import blog
-    app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
+    # from . import blog
+    # app.register_blueprint(blog.bp)
+    # app.add_url_rule('/', endpoint='index')
 
 
     return app
@@ -41,15 +41,17 @@ def create_app(test_config=None):
 
 """
 For Linux and Mac:
-$ export FLASK_APP=flaskr
+$ export FLASK_APP=coffee101
 $ export FLASK_ENV=development
 $ flask run
+
 For Windows cmd, use set instead of export:
-> set FLASK_APP=flaskr
+> set FLASK_APP=coffee101
 > set FLASK_ENV=development
 > flask run
+
 For Windows Powershell
-> $env:FLASK_APP = "flaskr"
+> $env:FLASK_APP = "coffee101"
 > $env:FLASK_ENV = "development"
 > flask run
 Init database

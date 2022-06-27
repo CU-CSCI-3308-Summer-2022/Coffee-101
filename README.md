@@ -9,10 +9,6 @@ instructions on how to make a perfect coffee.
 ```
 coffee101
 ├── __init__.py
-├── __pycache__
-│   ├── __init__.cpython-39.pyc
-│   ├── auth.cpython-39.pyc
-│   └── db.cpython-39.pyc
 ├── auth.py
 ├── db.py
 ├── schema.sql

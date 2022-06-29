@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Hello World{% endblock %}</h1>
+<center>
+  <h1>{% block title %}Welcome to Coffee 101. </h1>
+
+    <h1>Our goal is to show how to make different types of coffee/drinks (Americano, cappuccino, etc..) while providing knowledge, background and history about different types of coffee. The Coffee101 app will provide users instructions on how to make a perfect coffee. 
+{% endblock %}</h1>
+            <img
+              class="card-img-top"
+              id="coffee_img"
+              src="../static/img/Cappuccino.jpg"
+              alt="Placeholder for Coffee image"
+            />
+</center>
   {% if g.user %}
     <a class="action" href="{{ url_for('blog.create') }}">New</a>
   {% endif %}

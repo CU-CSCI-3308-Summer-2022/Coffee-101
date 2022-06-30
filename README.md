@@ -10,6 +10,7 @@ instructions on how to make a perfect coffee.
 coffee101
 ├── __init__.py
 ├── auth.py
+├── menu.py
 ├── db.py
 ├── schema.sql
 ├── static
@@ -22,7 +23,10 @@ coffee101
 │   │   ├── drinks2.webp
 │   │   ├── drinks3.jpg
 │   │   ├── drinks4].jpg
-│   │   └── espresso-recipe-guide.png
+│   │   ├── cappuchino.png
+│   │   ├── espresso.png
+│   │   ├── latte.png
+│   │   └── macchiato.png
 │   ├── js
 │   │   ├── bootstrap.bundle.js
 │   │   ├── bootstrap.bundle.js.map
@@ -35,13 +39,16 @@ coffee101
 │   │   ├── bootstrap.js
 │   │   ├── bootstrap.js.map
 │   │   ├── bootstrap.min.js
-│   │   └── bootstrap.min.js.map
+│   │   ├── bootstrap.min.js.map
+│   │   └── my_scripts.js
 │   └── style.css
 ├── templates
 │   ├── auth
 │   │   ├── login.html
 │   │   └── register.html
 │   ├── base.html
+│   ├── coffee_menu
+│   │   └── menu.html
 │   └── view
 │       ├── create.html
 │       ├── dashboard.html

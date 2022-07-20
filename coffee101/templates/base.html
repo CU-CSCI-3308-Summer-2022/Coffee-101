@@ -11,11 +11,20 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark py-3"
          style="background-image: url({{ url_for('static', filename='img/nav_bg.jpg') }}); background-repeat: no-repeat; background-size: cover;">
 
+
+        {% if g.user %}
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a style="color: rgb(255, 255, 255);" href="#"> Home</a>
+            <li class="nav-item"><a href="{{ url_for('view.dashboard') }}" style="color: white;">Dashboard</a>
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <li class="nav-item"><a href="{{ url_for('view.index') }}" style="color: white;">Selection</a>
+            </li>
+        </ul>
+        {% endif %}
+
 
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">

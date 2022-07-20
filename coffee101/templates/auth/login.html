@@ -5,11 +5,27 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-  </form>
+<form method="post">
+<div class="modal-dialog modal-login">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Log In</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required"/>
+            </div>
+            <div class="form-group">
+                <input id="psw" type="password" class="form-control" id="password" name="password" placeholder="Password"
+                       required="required"/>
+            </div>
+            <div class="form-group">
+                <button id="my_submit_button" type="submit" class="btn btn-primary btn-block login-btn">
+                    Log In
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
 {% endblock %}

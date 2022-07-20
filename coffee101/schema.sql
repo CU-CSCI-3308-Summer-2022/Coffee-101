@@ -1,53 +1,42 @@
-/* Reset + (Re)Generate SQLite Data-frames   /
-/  WARNING: Execution of this file directly  /
-/           -will- result in loss of user    /
-/           and post data.	    	     /
-/ ----------------------------------------- */
-
---reset
 DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS post;
-DROP TABLE IF EXISTS drinks;
+DROP TABLE IF EXISTS drink;
+DROP TABLE IF EXISTS record;
 
---user:
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
-  email TEXT NOT NULL,
-  password TEXT NOT NULL,
-  saved_coffees TEXT[] NOT NULL
+  firstName TEXT  NOT NULL,
+  lastName TEXT  NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
 );
 
---post:
-CREATE TABLE post (
-  id   	    INTEGER   PRIMARY KEY AUTOINCREMENT,
-  author_id INTEGER   NOT NULL,
-  created   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  title     TEXT      NOT NULL,
-  body 	    TEXT      NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES user (id)
-);
-
---drinks: 
-CREATE TABLE drinks (
-  id   	    INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE drink (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   drink_name  TEXT  UNIQUE NOT NULL,
   image       TEXT  NOT NULL,
-  keywords    TEXT  
-);	
+  keywords    TEXT
+);
 
---Add in the usual suspects.
-INSERT INTO drinks (drink_name, image_file, keywords)
+CREATE TABLE record (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  drink_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES user (id),
+  FOREIGN KEY (drink_id) REFERENCES drink (id)
+);
+
+INSERT INTO drink (drink_name, image, keywords)
    VALUES
-       ('Breve', 'img/bev/breve.png', 'dairy'),
-       ('Cappuccino', 'img/bev/cappuccino.png', 'dairy'),
-       ('Dry Cappuccino', 'img/bev/dry_cappuccino.png', 'dairy'),
-       ('Americano', 'img/bev/americano.png', 'non-dairy'),
-       ('Espresso', 'img/bev/espresso.png', 'non-dairy'),
-       ('Latte', 'img/bev/latte.png', 'dairy'),
-       ('Mocha', 'img/bev/mocha.png', 'dairy'),
-       ('Macchiato', 'img/bev/macchiato.png', 'dairy'),
-       ('Hawaiian', 'img/bev/hawaiian.png', 'non-dairy'),
-       ('Irish', 'img/bev/irish.png', 'dairy_alcohol'),
-       ('Flat White', 'img/bev/flat_white.png', 'dairy'),
-       ('Caramel Macchiato', 'img/bev/caramel_macchiato.png', 'dairy');
+       ('Breve', 'static/img/bev/breve.png', 'dairy'),
+       ('Cappuccino', 'static/img/bev/cappuccino.png', 'dairy'),
+       ('Dry Cappuccino', 'static/img/bev/dry_cappuccino.png', 'dairy'),
+       ('Americano', 'static/img/bev/americano.png', 'non-dairy'),
+       ('Espresso', 'static/img/bev/espresso.png', 'non-dairy'),
+       ('Latte', 'static/img/bev/latte.png', 'dairy'),
+       ('Mocha', 'static/img/bev/mocha.png', 'dairy'),
+       ('Macchiato', 'static/img/bev/macchiato.png', 'dairy'),
+       ('Hawaiian', 'static/img/bev/hawaiian.png', 'non-dairy'),
+       ('Irish', 'static/img/bev/irish.png', 'dairy_alcohol'),
+       ('Flat White', 'static/img/bev/flat_white.png', 'dairy'),
+       ('Caramel Macchiato', 'static/img/bev/caramel_macchiato.png', 'dairy');

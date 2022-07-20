@@ -1,17 +1,70 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Register{% endblock %}</h1>
+
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="email">Email</label>
-    <input name="email" id="email" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Register">
-  </form>
+<!--<form method="post">-->
+<!--    <label for="username">Username</label>-->
+<!--    <input name="username" id="username" required>-->
+<!--    <label for="email">Email</label>-->
+<!--    <input name="email" id="email" required>-->
+<!--    <label for="password">Password</label>-->
+<!--    <input type="password" name="password" id="password" required>-->
+<!--    <input type="submit" value="Register">-->
+<!--</form>-->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+<form method="post">
+<div class="modal-dialog modal-login">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required="required"
+                       onclick="openModal()"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required="required"/>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required"/>
+            </div>
+            <div class="form-group">
+                <input id="psw" type="password" class="form-control" id="password" name="password" placeholder="Password"
+                       required="required"/>
+            </div>
+            <div class="form-group">
+                <input id="cpsw" type="password" class="form-control" name="confirm password"
+                       placeholder="Confirm Password"
+                       required="required"/>
+            </div>
+            <div class="form-group">
+                <button id="my_submit_button" class="btn btn-primary btn-block login-btn" type="submit" disabled>
+                    Sign Up
+                </button>
+            </div>
+        </div>
+        <div class="modal-footer" id="modal-footer" hidden>
+            <div id="message" style="display: block">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">
+                    A <b>capital (uppercase)</b> letter
+                </p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                <p id="match" class="invalid">
+                    Password and Confirm Password Match
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
 {% endblock %}

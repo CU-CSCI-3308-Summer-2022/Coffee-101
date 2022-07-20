@@ -23,14 +23,28 @@ def create_app():
 @bp.route('/')
 def index():
     db = get_db()
-    posts = db.execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC'
+    drinks = db.execute(
+        'SELECT *'
+        ' FROM drink'
     ).fetchall()
-    return render_template('view/index.html', posts=posts)
+    return render_template('view/index.html', drinks=drinks)
 
 
+@bp.route('/dashboard')
+def dashboard():
+    db = get_db()
+    users = db.execute(
+        'SELECT COUNT(*) as userCount FROM user'
+    ).fetchone()
+    drinks = db.execute(
+        'SELECT * FROM drink'
+    ).fetchall()
+    return render_template('view/dashboard.html', users=users, drinks=drinks)
+
+
+
+# reference
+"""
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
@@ -74,25 +88,6 @@ def get_post(id, check_author=True):
     return post
 
 
-@bp.route('/dashboard')
-def dashboard():
-    db = get_db()
-
-    users = db.execute(
-        'SELECT COUNT (*) AS userCount FROM user;'
-       
-    ).fetchone()
-
-    coffees = db.execute(
-        'SELECT COUNT(*) AS coffeeCount FROM post;'
-    ).fetchone()
-
-    useremail = db.execute(
-        'SELECT email AS userEmail FROM user;'
-    ).fetchone()
-    
-    return render_template('view/dashboard.html', users=users, coffees=coffees, useremail=useremail)
-
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
@@ -129,3 +124,5 @@ def delete(id):
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('view.index'))
+    
+"""

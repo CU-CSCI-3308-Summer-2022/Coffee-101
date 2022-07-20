@@ -1,5 +1,11 @@
 # macOS Files
 .DS_Store
+
+# python
+./.venv/
 /venv/
 /env/
 __pycache__
+
+# images
+coffee101/static/img/bev/.xcf/

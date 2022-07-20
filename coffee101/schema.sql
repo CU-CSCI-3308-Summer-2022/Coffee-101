@@ -5,7 +5,8 @@ CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
   email TEXT NOT NULL,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  saved_coffees TEXT[] NOT NULL
 );
 
 CREATE TABLE post (

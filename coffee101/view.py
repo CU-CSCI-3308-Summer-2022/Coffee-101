@@ -74,6 +74,25 @@ def get_post(id, check_author=True):
     return post
 
 
+@bp.route('/dashboard')
+def dashboard():
+    db = get_db()
+
+    users = db.execute(
+        'SELECT COUNT (*) AS userCount FROM user;'
+       
+    ).fetchone()
+
+    coffees = db.execute(
+        'SELECT COUNT(*) AS coffeeCount FROM post;'
+    ).fetchone()
+
+    useremail = db.execute(
+        'SELECT email AS userEmail FROM user;'
+    ).fetchone()
+    
+    return render_template('view/dashboard.html', users=users, coffees=coffees, useremail=useremail)
+
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):

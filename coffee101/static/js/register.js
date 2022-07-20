@@ -16,14 +16,14 @@ function openModal() {
     console.log("helllooo");
     modal_footer.removeAttribute("hidden");
 
-    /* TODO: Question 1.1: Starts here */
+
     var lowerCaseLetters = /[a-z]/g; // : Fill in the regular experssion for lowerCaseLetters
     var upperCaseLetters = /[A-Z]/g; // : Fill in the regular experssion for upperCaseLetters
     var numbers = /[0-9]/g; // : Fill in the regular experssion for digits
     var minLength = 8; // : Change the minimum length to what what it needs to be in the question
-    /* TODO: Question 1.1: Ends here */
 
-    /* TODO: Question 1.2:  Starts here */
+
+
     /*
          - So first read up on classList.
          - Perform a console.log(letter.classList) and check the array that you see. By default the first time, there should be just 1 element and it should be
@@ -70,12 +70,12 @@ function openModal() {
       length.classList.remove("valid");
       length.classList.add("invalid");
     }
-    /* TODO: Question 1.2:  Ends here */
+
   };
-  /* TODO Question 1.3: Starts here */
+
   confirmMyInput.onkeyup = function () {
     // Validate password and confirmPassword
-    var passEqualsConfPass = (myInput.value==confirmMyInput.value); // TODO: Change this to the condition that needs to be checked so that the text entered in password equals the text in confirm password
+    var passEqualsConfPass = (myInput.value==confirmMyInput.value); //
     if (passEqualsConfPass) {
       match.classList.remove("invalid");
       match.classList.add("valid");
@@ -83,7 +83,7 @@ function openModal() {
       match.classList.remove("valid");
       match.classList.add("invalid");
     }
-    /* TODO Question 1.3: Starts here */
+
 
     // Disable or Enable the button based on the elements in classList
     enableButton(letter, capital, number, length, match);
@@ -91,7 +91,7 @@ function openModal() {
 }
 
 function enableButton(letter, capital, number, length, match) {
-  // TODO: Clear this function for students to implement
+
   var button = document.getElementById("my_submit_button");
   var condition = (
     letter.classList.value=="valid" &&
@@ -99,7 +99,7 @@ function enableButton(letter, capital, number, length, match) {
     number.classList.value=="valid" &&
     length.classList.value=="valid" &&
     match.classList.value=="valid"
-    ); // TODO: Replace false with the correct condition
+    );
   if (condition) {
     button.disabled = false;
     //button.setAttribute("onclick", "onClickFunction()")

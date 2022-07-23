@@ -1,1 +1,1 @@
-web: python coffee101:create_app
+web: gunicorn coffee101:create_app

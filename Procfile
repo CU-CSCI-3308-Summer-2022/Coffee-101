@@ -1,1 +1,1 @@
-web: gunicorn wsgi:coffee101
+web: gunicorn app:coffee101

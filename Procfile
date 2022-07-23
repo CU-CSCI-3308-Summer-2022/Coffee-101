@@ -1,1 +1,1 @@
-web: python coffee101:create_app()
+web: python coffee101:create_app

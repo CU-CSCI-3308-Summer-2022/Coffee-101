@@ -10,13 +10,14 @@
         <div class="col-4">
             <div class="card shadow p-1 bg-white rounded">
                 <div class="card-block">
-                    <div class="row">
+                    <div class="row d-flex align-items-center">
                         <div class="col-7 align-items-center">
-                            <h4>Users</h4>
-                            <h4 class="text-muted">{{ users['userCount'] }}</h4>
+                            <h4 class="mb-0">Users</h4>
+                            <h4 class="text-muted mb-0">{{ users['userCount'] }}</h4>
                         </div>
                         <div class="col-5">
-                            <img src="{{ url_for('static', filename='img/display/people.png') }}" style="height: 100px;" class="img-fluid"
+                            <img src="{{ url_for('static', filename='img/display/people.png') }}" style="height: 100px;"
+                                 class="img-fluid"
                                  alt="logoforpeople">
                         </div>
                     </div>
@@ -27,13 +28,14 @@
         <div class="col-4">
             <div class="card shadow p-1 bg-white rounded">
                 <div class="card-block">
-                    <div class="row">
+                    <div class="row d-flex align-items-center">
                         <div class="col-7 align-items-center">
-                            <h4> Cups of day</h4>
-                            <h4 class="text-muted">0</h4>
+                            <h4> Cups of today</h4>
+                            <h4 class="text-muted">{{ cups['cupCount'] }}</h4>
                         </div>
                         <div class="col-5">
-                            <img src="{{ url_for('static', filename='img/display/coffeecup.png') }}" style="height: 100px;" class="img-fluid"
+                            <img src="{{ url_for('static', filename='img/display/coffeecup.png') }}"
+                                 style="height: 100px;" class="img-fluid"
                                  alt="logoforpeople">
                         </div>
                     </div>
@@ -42,67 +44,78 @@
         </div>
 
         <div class="col-4">
-            <div class="card shadow p-1 rounded" style="background-color: black;">
-                <div class="card-block">
-                    <div class="row">
-                        <div class="col-7 align-items-center">
-                            <h4 style="color: whitesmoke;"> Saved</h4>
-                            <h4 class="text-muted"> 10</h4>
-                        </div>
-                        <div class="col-5">
-                            <img src="{{ url_for('static', filename='img/display/staricon.png') }}" style="height: 100px;" class="img-fluid"
-                                 alt="logoforpeople">
-                        </div>
-                    </div>
+            <div class="card">
+                <div class="card-header" style="background-color: rgba(86, 53, 5, 0.678);">
+                    <h4 style="text-align: center;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+                        Personal Information</h4>
+                </div>
+                <div class="card-body" style="background-color: white; text-align: left;">
+                    <h5>Username: {{ g.user['firstName'] }} {{ g.user['lastName'] }}</h5>
+                    <h5>Email: {{ g.user['email'] }}</h5>
+                    <h5>Social Media: </h5>
+                    <a href="https://facebook.com" style="margin-right: 3rem; text-decoration: none;">
+                        <ion-icon name="logo-facebook" size="large"></ion-icon>
+                    </a>
+                    <a href="https://instagram.com" style="margin-right: 3rem; color: black; text-decoration: none;">
+                        <ion-icon name="logo-instagram" size="large"></ion-icon>
+                    </a>
+                    <a href="https://youtube.com" style="margin-right: 3rem; color: red; text-decoration: none;">
+                        <ion-icon name="logo-youtube" size="large"></ion-icon>
+                    </a>
+                    <a href="https://linkedin.com" style="margin-right: 3rem; color: black; text-decoration: none;">
+                        <ion-icon name="logo-Linkedin" size="large"></ion-icon>
+                    </a>
+                    <a href="https://twitter.com">
+                        <ion-icon name="logo-twitter" size="large"></ion-icon>
+                    </a>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="row container-fluid" style="margin-top: 20px; margin-bottom: 20px;">
         <div class="col-8">
             <div class="card-header" style="background-color: rgb(210, 210, 210); opacity: .7;">
-                <h4 style="font-family: Georgia, 'Times New Roman', Times, serif;">Personal Information</h4>
+                <h4 style="font-family: Georgia, 'Times New Roman', Times, serif;">My Favorites</h4>
             </div>
-            <div class="card-body" style="background-color: white;">
-                <h5>Username: {{ g.user['firstName'] }} {{ g.user['lastName'] }}</h5>
-                <h5>Email: {{ g.user['email'] }}</h5>
-                <h5>Social Media: </h5>
-                <a href="https://facebook.com" style="margin-right: 4rem;">
-                    <ion-icon name="logo-facebook" size="large"></ion-icon>
-                </a>
-                <a href="https://instagram.com" style="margin-right: 4rem; color: black;">
-                    <ion-icon name="logo-instagram" size="large"></ion-icon>
-                </a>
-                <a href="https://youtube.com" style="margin-right: 4rem; color: red;">
-                    <ion-icon name="logo-youtube" size="large"></ion-icon>
-                </a>
-                <a href="https://linkedin.com" style="margin-right: 4rem; color: black;">
-                    <ion-icon name="logo-Linkedin" size="large"></ion-icon>
-                </a>
-                <a href="https://twitter.com">
-                    <ion-icon name="logo-twitter" size="large"></ion-icon>
-                </a>
-            </div>
+            <div class="card-body" style="text-align: center;">
 
-        </div>
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header" style="background-color: rgba(86, 53, 5, 0.678);">
-                    <h4 style="text-align: center;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
-                        Favorites</h4>
-                </div>
-                <div class="card-body" style="text-align: center;">
-                    <p> Machiato </p>
-                    <p> Capuccino</p>
-                    <p> Cold-brew coffee</p>
+                <div class="row" id="photoCards" style="margin-bottom: 0px;">
+                    {% for fav in favs %}
+                    <div class="col-md-4">
+                        <div class="card box-shadow">
+                            <img class="card-img-top" src="{{ fav['image'] }}"
+                                 style="height: 280px; width: auto; display: block;  border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row container-fluid" style="margin-bottom: 5rem;">
+    <div class="row container-fluid" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="col-8">
+            <div class="card-header" style="background-color: rgb(210, 210, 210); opacity: .7;">
+                <h4 style="font-family: Georgia, 'Times New Roman', Times, serif;">History</h4>
+            </div>
+            <div class="card-body" style="text-align: center;">
+
+                <div class="row" style="margin-bottom: 20px;">
+                    {% for his in history %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{ his['image'] }}"
+                                 style="height: 280px; width: auto; display: block;  border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row container-fluid">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -137,10 +150,6 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
     </div>
-
 </div>
-
-
 {% endblock %}

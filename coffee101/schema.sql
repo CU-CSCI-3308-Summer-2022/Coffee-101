@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS drink;
+DROP TABLE IF EXISTS fav;
 DROP TABLE IF EXISTS record;
 
 CREATE TABLE user (
@@ -17,11 +18,20 @@ CREATE TABLE drink (
   keywords    TEXT
 );
 
+CREATE TABLE fav (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  drink_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT (datetime('now','localtime')),
+  FOREIGN KEY (user_id) REFERENCES user (id),
+  FOREIGN KEY (drink_id) REFERENCES drink (id)
+);
+
 CREATE TABLE record (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER NOT NULL,
   drink_id INTEGER NOT NULL,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created TIMESTAMP NOT NULL DEFAULT (datetime('now','localtime')),
   FOREIGN KEY (user_id) REFERENCES user (id),
   FOREIGN KEY (drink_id) REFERENCES drink (id)
 );

@@ -1,1 +1,1 @@
-web: python RunFlask.py
+web: python coffee101:create_app()

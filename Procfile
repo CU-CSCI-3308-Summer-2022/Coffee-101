@@ -1,1 +1,1 @@
-web: gunicorn coffee101.RunFlask:coffee101
+web: gunicorn coffee101.RunFlask:application

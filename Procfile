@@ -1,1 +1,1 @@
-web: gunicorn app:coffee101
+web: gunicorn FLASK_APP:coffee101
